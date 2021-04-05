@@ -6,4 +6,4 @@ This program demonstrates my random algorithm I developed to shuffle a deck of c
 Example of one iteration below:
 
 
-![](output.png "Example of shuffling output")
+![](output.PNG)
