@@ -1,38 +1,36 @@
-#include "stdio.h"
 #include <string>
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
 #include <fstream>
 
+using namespace std;
 
 const int CARDS_IN_DECK = 52;
 const int NULL_CHARACTER = -1;
 
-using namespace std;
-
 
 void deal_cards(string good_deck[], int shuffled_deck[], string CARDS[]) {
 
-    int counter=0, b=0;
+    int counter = 0, b = 0;
 
     cout<<"Here is the the shuffled deck: \n";
     for(counter=0; counter < CARDS_IN_DECK; counter++) {
-        good_deck[counter]=CARDS[shuffled_deck[counter]];
-        cout<<good_deck[counter]<<endl;
+        good_deck[counter] = CARDS[shuffled_deck[counter]];
+        cout<<good_deck[counter] << endl;
     }
 
     // Deal to 2 players only
     string player1[2], player2[2];
 
-    player1[0]=good_deck[0];
-    player2[0]=good_deck[1];
-    player1[1]=good_deck[2];
-    player2[1]=good_deck[3];
+    player1[0] = good_deck[0];
+    player2[0] = good_deck[1];
+    player1[1] = good_deck[2];
+    player2[1] = good_deck[3];
 
-    cout<<"\nPlayer one has: "<<player1[0]<<" "<<player1[1]<<endl;
-    cout<<"Player two has: "<<player2[0]<<" "<<player2[1]<<endl<<endl;
-    cout<<"The flop, turn and river is: "<<good_deck[5]<<" "<<good_deck[6]<<" "<<good_deck[7]<<" "<<good_deck[9]<<" "<<good_deck[11]<<endl;
+    cout<<"\nPlayer one has: "<<player1[0]<<" "<<player1[1] << endl;
+    cout<<"Player two has: "<<player2[0]<<" "<<player2[1]<<endl << endl;
+    cout<<"The flop, turn and river is: "<<good_deck[5]<<" "<<good_deck[6]<<" "<<good_deck[7]<<" "<<good_deck[9]<<" "<<good_deck[11] << endl;
 }
 
 
@@ -51,17 +49,16 @@ void shuffle_up_and_deal(string CARDS[]) {
     // For the random number, this is done in the overall for loop. The shuffling will be done when i == 51.
 
 
-
     int counter = 0;
-    int a, b = 0, c = 0;    //counters for the for loopss
+    int a, b = 0, c = 0;    //counters for the for loops
 
     int shuffled_deck[CARDS_IN_DECK];
     string good_deck[CARDS_IN_DECK];
 
     // This sets all the initial values in the array to null; i'm using -1 for now.
 
-    for(a=0; a <=CARDS_IN_DECK; a++)
-        shuffled_deck[a]=NULL_CHARACTER;
+    for(a = 0; a <= CARDS_IN_DECK; a++)
+        shuffled_deck[a] = NULL_CHARACTER;
 
     while (b < CARDS_IN_DECK) {
 
@@ -70,7 +67,7 @@ void shuffle_up_and_deal(string CARDS[]) {
         rnd_card = CARDS_IN_DECK / 51; //where n  = the number range
         rnd_card = (rand() * CARDS_IN_DECK + rnd_card);
         rnd_card = (rand() * CARDS_IN_DECK + rnd_card) / (RAND_MAX + 1);
-        rnd_card = rnd_card%CARDS_IN_DECK;
+        rnd_card = rnd_card % CARDS_IN_DECK;
 
         // Need to check if the current location is full, if it is then we skip slot.
         // Everytime we add a new entry to the array, we then increase the counter by one, so that
@@ -86,7 +83,7 @@ void shuffle_up_and_deal(string CARDS[]) {
             card_exists = false;
 
             // This is the check to see if the card already exists in the deck
-            for(c=0; c < CARDS_IN_DECK; c++) {
+            for(c = 0; c < CARDS_IN_DECK; c++) {
 
                 if (shuffled_deck[c] == rnd_card) {
                     card_exists = true;
@@ -115,7 +112,6 @@ void shuffle_up_and_deal(string CARDS[]) {
     tempfile.close();
 
     deal_cards(good_deck, shuffled_deck, CARDS);
-
 }
 
 
